@@ -1,0 +1,2 @@
+# sccStar
+finite state machine
