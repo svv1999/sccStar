@@ -1,9 +1,3 @@
-private import std.stdio;
-private import std.conv : to;
-private import stackext: StackExtended;
-private import star: Star;
-private import graph: Graph;
-
 enum Node:uint{ min=uint.min, max=uint.max, one=1, two, thr, fou, fiv};
   debug alias uint Node;
 alias Star!Node NodeStar;
@@ -20,7 +14,7 @@ VisNum[ Node] possibleRoot; // root of scc is node first visiting scc
 StackExtended!Node stack;
 NodeStarStar tarjan( Node v){
   VisNum min( VisNum left, VisNum right){
-    auto retval= left<right ? left : right;
+    auto retval= left<right ?left :right;
     debug(min) writefln( "root( %s, %s)==%s", left, right, retval);
     return retval;
   }
@@ -91,6 +85,13 @@ unittest{
     } else {
     }
   }
-  write( sccStar);
-  writeln( "sccPure Done.");
+  writeln( sccStar);
+  debug writeln( "sccPure: Done.");
 }
+private import std.conv :to;
+private import stackext :StackExtended;
+private import star :Star;
+private import graph :Graph;
+
+version( unittest)
+  private import std.stdio;

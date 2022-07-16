@@ -1,4 +1,13 @@
-all: graph.d
+all: sccpure
+sccpure: sccpure.d
+	rdmd --main -unittest sccpure
+sccpure2: sccpure2.d
+	rdmd --main -unittest sccpure2
+stackext: stackext.d
+	rdmd --main -unittest stackext
+stack: stack.d
+	rdmd --main -unittest stack
+graph: graph.d
 	rdmd --main -unittest graph
 doc: docs/swrite.html docs/graph.html docs/sccpure.html
 docs/sccpure.html: sccpure.d

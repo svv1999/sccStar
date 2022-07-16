@@ -56,5 +56,5 @@ unittest{
   stack--;
   assert( stack.isEmpty);
   //stack--;
-  writeln( "Stack Done.");
+  debug writeln( "Stack Done.");
 }

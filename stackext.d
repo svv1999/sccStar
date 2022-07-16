@@ -49,5 +49,5 @@ unittest{
   assert( 1 in stack); // this is new
   stack--;
   assert( 1 !in stack);
-  writeln( "StackExtended Done.");
+  debug writeln( "StackExtended Done.");
 }

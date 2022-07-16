@@ -29,7 +29,12 @@ class Graph( Node){
     auto buffer= new SWrite;
     buffer.take( "Graph: {");
     buffer.take( "  Nodes: %s", nodes);
-    buffer.take( "  Edges: %s", neighbourhood);
+    foreach( source; neighbourhood)
+      foreach( target, ignoredValue; source.tupleof[ 0])
+        buffer.take( "  Edge: %s -> %s"
+                   , source
+                   , neighbourhood[ target]
+                   );
     buffer.take( "}");
     auto s= buffer.give;
     return s;
@@ -97,16 +102,13 @@ unittest{
   g[ 1]+= 1;
   assert( 1 in g[1]);
 
-  auto res =
-"Graph: {  Nodes: * =[1:true]
-  Edges: [1:* =[1:true]
-]}";
+  auto res = "Graph: {  Nodes: 1  Edge: 1 -> 1}";
   auto buffer= new SWrite;
   buffer.take( "%s", g);
   auto s= buffer.give;
-  debug writeln( s);
-  assert( s == res);
+  debug  writeln( s);
+  assert( s == res, "error: printing edges shows its type, not its values");
 
   debug delete g;
-  writeln( "Graph Done.");
+  debug writeln( "Graph Done.");
 }
